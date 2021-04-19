@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salut</title>
+</head>
+<body>
+    <h1>hello {{ prenom }}</h1>
+
+    {% for age in ages %}
+     
+    <ul>
+        {% if age >= 18 %}
+        
+        <li>Adulte</li>
+        {% else %}
+        <li>Enfant</li>
+        {% endif %}
+    </ul>
+        
+    {% endfor %}
+    
+</body>
+</html>

@@ -1,0 +1,12 @@
+#index:
+   #path: /
+   #controller: App\Controller\TestController::index
+
+#test:
+   #path: /test/{age<\d+>?0}
+   #controller: App\Controller\TestController::test
+   #defaults: 
+   # age: 20
+   #requirements:
+   # age: \d+
+
