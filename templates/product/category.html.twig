@@ -6,7 +6,10 @@ Categorie :
 {% endblock %}
 
 {% block body %}
-Categorie :
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="{{ path('app_homepage') }}">Accueil</a></li>
+  <li class="breadcrumb-item active">{{ category.name }}</li>
+</ol>
 <h1>Catégorie : {{category.name }}</h1>
 
 <div class="row">
