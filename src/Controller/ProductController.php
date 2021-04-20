@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/{slug}", name="product_category", priority=-1)
+     * @Route("/categorie/{slug}", name="product_category", priority=-1)
      */
     public function category($slug, CategoryRepository $repo): Response
     {
@@ -19,7 +19,7 @@ class ProductController extends AbstractController
             'slug' => $slug
         ]);
 
-        if(!$category){
+        if (!$category) {
             throw $this->createNotFoundException("Cette catégorie n'existe pas !");
         }
 
@@ -38,7 +38,7 @@ class ProductController extends AbstractController
             'slug' => $slug
         ]);
 
-        if(!$product){
+        if (!$product) {
             throw $this->createNotFoundException("Ce produit n'existe pas !");
         }
 
@@ -46,7 +46,5 @@ class ProductController extends AbstractController
             'slug' => $slug,
             'product' => $product
         ]);
-
-
     }
 }
