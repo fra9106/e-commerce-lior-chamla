@@ -15,6 +15,7 @@
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.7",
+        "easycorp/easyadmin-bundle": "^3.2",
         "liorchamla/faker-prices": "^2.0",
         "mbezhanov/faker-provider-collection": "^1.2",
         "phpdocumentor/reflection-docblock": "^5.2",
