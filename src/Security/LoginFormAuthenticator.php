@@ -97,7 +97,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     {
 
         //$this->session->getFlashBag()->add('message', 'Connecté!');
-        $request->getSession()->getFlashBag()->add('message', 'You are logged ! Welcome ' . $token->getUser()->getFullName());// session récupéré par la request ;=)
+        $request->getSession()->getFlashBag()->add('message', 'Vous êtes connecté ! Content de vous revoir ' . $token->getUser()->getFullName());// session récupéré par la request ;=)
 
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
