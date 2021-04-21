@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+<br>
 	{% for message in app.flashes('message') %}
 		<div class="alert alert-success text-center" role="alert">
 			{{ message}}
