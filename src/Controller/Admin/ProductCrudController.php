@@ -4,9 +4,12 @@ namespace App\Controller\Admin;
 
 use App\Entity\Product;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -26,9 +29,11 @@ class ProductCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('name'),
             AssociationField::new('category'),
-            TextField::new('slug'),
+            SlugField::new('slug')->setTargetFieldName('name'),
             TextField::new('short_description'),
-            TextField::new('main_picture'),
+            TextField::new('mainPictureFile')->setFormType(VichImageType::class),
+            ImageField::new('mainPicture')->setBasePath('/uploads/images/')->onlyOnIndex(),
+            DateField::new('created')->hideOnForm(),
             MoneyField::new('price')->setCurrency('EUR'),
         ];
     }

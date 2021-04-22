@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use DateTime;
 use App\Entity\Category;
 use Faker\Factory;
 use App\Entity\Product;
@@ -62,7 +63,9 @@ class AppFixtures extends Fixture
                 ->setSlug(strtolower($this->slugger->slug($product->getName())))
                 ->setCategory($category)
                 ->setShortDescription($faker->paragraph())
-                ->setMainPicture($faker->imageUrl(400,400, true));
+                ->setMainPicture($faker->imageUrl(400,400, true))
+                ->setCreated(new DateTime());
+            ;
 
                 
                 $manager->persist($product);
