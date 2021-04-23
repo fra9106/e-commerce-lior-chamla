@@ -31,18 +31,18 @@ class ProductCrudController extends AbstractCrudController
             AssociationField::new('category'),
             SlugField::new('slug')->setTargetFieldName('name'),
             TextField::new('short_description'),
-            TextField::new('mainPictureFile')->setFormType(VichImageType::class),
+            TextField::new('mainPictureFile')->setFormType(VichImageType::class)->hideOnIndex(),
             ImageField::new('mainPicture')->setBasePath('/uploads/images/')->onlyOnIndex(),
-            DateField::new('created')->hideOnForm(),
+            DateField::new('created'),
             MoneyField::new('price')->setCurrency('EUR'),
         ];
     }
 
-    /*public function configureCrud(Crud $crud): Crud
+    public function configureCrud(Crud $crud): Crud
     {
         return $crud
-        ->setDefaultSort(['createAt' => 'DESC']);
-    }*/
+        ->setDefaultSort(['created' => 'DESC']);
+    }
 
 
 
