@@ -11,7 +11,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
@@ -28,12 +27,12 @@ class ProductCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('name'),
-            AssociationField::new('category'),
             SlugField::new('slug')->setTargetFieldName('name'),
+            AssociationField::new('category'),
             TextField::new('short_description'),
             TextField::new('mainPictureFile')->setFormType(VichImageType::class)->hideOnIndex(),
             ImageField::new('mainPicture')->setBasePath('/uploads/images/')->onlyOnIndex(),
-            DateField::new('created'),
+            DateField::new('createdAt')->hideOnForm(),
             MoneyField::new('price')->setCurrency('EUR'),
         ];
     }
@@ -41,7 +40,7 @@ class ProductCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-        ->setDefaultSort(['created' => 'DESC']);
+        ->setDefaultSort(['createdAt' => 'DESC']);
     }
 
 

@@ -23,7 +23,7 @@
 	<div class="row">
 
 		<div class="col-4">
-			<img src="{{ product.mainPicture }}" class="img-fluid" alt=" image de : {{ product.name }}">
+			<img src="{{ vich_uploader_asset(product, 'mainPictureFile') }}" class="img-fluid" alt=" image de : {{ product.name }}">
 		</div>
 		<div class="col">
 			<span class="badge badge-primary">{{ product.category.name }}</span><br>

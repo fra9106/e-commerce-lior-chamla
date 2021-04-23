@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProductRepository;
+use OpenCloud\Common\Constants\Datetime;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
@@ -58,12 +59,7 @@ class Product
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $created;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $updated;
+    private $createdAt;
 
     public function getId(): ?int
     {
@@ -144,7 +140,7 @@ class Product
         $this->mainPictureFile = $mainPicture;
 
         if ($mainPicture) {
-            $this->updated = new \Datetime('now');
+            $this->createdAt = new \Datetime('now');
         }
     }
 
@@ -166,41 +162,21 @@ class Product
     }
 
     /**
-     * Get the value of updated
+     * Get the value of createdAt
      */ 
-    public function getUpdated()
+    public function getCreatedAt()
     {
-        return $this->updated;
+        return $this->createdAt;
     }
 
     /**
-     * Set the value of updated
+     * Set the value of createdAt
      *
      * @return  self
      */ 
-    public function setUpdated($updated)
+    public function setCreatedAt($createdAt)
     {
-        $this->updated = $updated;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of created
-     */ 
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * Set the value of created
-     *
-     * @return  self
-     */ 
-    public function setCreated($created)
-    {
-        $this->created = $created;
+        $this->createdAt = $createdAt;
 
         return $this;
     }

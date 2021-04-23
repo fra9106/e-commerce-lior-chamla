@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-<br>
+	<br>
 	{% for message in app.flashes('message') %}
 		<div class="alert alert-success text-center" role="alert">
 			{{ message}}
@@ -21,7 +21,7 @@
 		{% for product in products %}
 			<div class="col">
 				<div class="card">
-					<img src="{{ product.mainPicture }}" class="img-fluid" alt="image produit">
+					<img src="{{ vich_uploader_asset(product, 'mainPictureFile') }}" class="img-fluid" alt=" image de : {{ product.name }}">
 					<div class="card-body">
 						<h4 class="card-title">{{ product.name }}
 							({{ product.price / 100 }}
@@ -39,8 +39,8 @@
 	<hr>
 	<h2 class="text-center">Services</h2>
 	<p class="text-center">Lorem ipsum dolor incididunt ut labore et dolore magna aliqua, quis nostrud exercitation
-		    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-		    velit esse cillum dolore eu fugiat nulla pariatur.
+				    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+				    velit esse cillum dolore eu fugiat nulla pariatur.
 	</p>
 
 	<div class="row mx-4">
