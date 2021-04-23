@@ -2,12 +2,17 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(
+ *      fields={"email"},
+ *      message = "Ce mail est déjà utilisé !")
  */
 class User implements UserInterface
 {
@@ -19,7 +24,11 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string", length=180)
+     * @Assert\Email(
+     *     message = "Cet email '{{ value }}' n'est pas un email valide !."
+     * )
+     * @Assert\NotBlank(message="email obligatoire !")
      */
     private $email;
 
@@ -31,16 +40,37 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 50,
+     *      minMessage = "Votre mot de passe doit être au minimum de {{ limit }} caratères de long",
+     *      maxMessage = "Votre mot de passe doit être au maximum de {{ limit }} caratères de long"
+     * )
+     * @Assert\NotBlank(message="Mot de passe obligatoire !")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=225)
+     *  @Assert\NotBlank(message="Prénom obligatoire !")
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 50,
+     *      minMessage = "Votre prénom doit être au minimum de {{ limit }} caratères de long",
+     *      maxMessage = "Votre prénom doit être au maximum de {{ limit }} caratères de long"
+     * )
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=225)
+     *  @Assert\NotBlank(message="Nom obligatoire !")
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 50,
+     *      minMessage = "Votre nom doit être au minimum de {{ limit }} caratères de long",
+     *      maxMessage = "Votre nom doit être au maximum de {{ limit }} caratères de long"
+     * )
      */
     private $lastName;
 

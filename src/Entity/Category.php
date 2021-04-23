@@ -6,6 +6,7 @@ use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
@@ -21,11 +22,18 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Le nom d'une catégorie ne peut pas contenir moins de {{ limit }} caractères de long",
+     *      maxMessage = "Le nom d'une catégorie ne peut pas contenir moins de {{ limit }} caractères de long"
+     * )
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="slug obligatoire !")
      */
     private $slug;
 
