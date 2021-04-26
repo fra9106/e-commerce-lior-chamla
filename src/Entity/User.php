@@ -51,6 +51,12 @@ class User implements UserInterface
     private $password;
 
     /**
+     * 
+     * @Assert\EqualTo(propertyPath="password") 
+     */
+    public $confirm_password;
+
+    /**
      * @ORM\Column(type="string", length=225)
      *  @Assert\NotBlank(message="Prénom obligatoire !")
      * @Assert\Length(
@@ -73,6 +79,11 @@ class User implements UserInterface
      * )
      */
     private $lastName;
+
+    /**
+     * @ORM\Column(type="string", length=70, nullable=true)
+     */
+    private $activation_token;
 
     public function getId(): ?int
     {
@@ -179,5 +190,17 @@ class User implements UserInterface
     public function getFullName(): string
     {
         return $this->getFirstName() . ' ' . $this->getLastName();
+    }
+
+    public function getActivationToken(): ?string
+    {
+        return $this->activation_token;
+    }
+
+    public function setActivationToken(?string $activation_token): self
+    {
+        $this->activation_token = $activation_token;
+
+        return $this;
     }
 }
