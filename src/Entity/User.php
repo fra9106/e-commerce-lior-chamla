@@ -85,6 +85,11 @@ class User implements UserInterface
      */
     private $activation_token;
 
+    public function __construct()
+    {
+        $this->roles = ['ROLE_USER'];
+    }
+
     public function getId(): ?int
     {
         return $this->id;

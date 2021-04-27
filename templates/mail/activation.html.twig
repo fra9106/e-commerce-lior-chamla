@@ -1,6 +1,6 @@
 <p>Bonjour {{ user }},</p>
-<p>Veuillez activer votre compte <a href=" https://monpersoweb.fr">Mon persoweb.fr</a></p>
-Veuillez cliquer sur le lien suivant : <br>
+<p>Veuillez activer votre compte <a href="http://e-commerce-symfony.herokuapp.com/">Mon e-commerce.fr</a></p>
+Pour pouvoir activer votre compte et ainsi  profiter pleinement de vos avantages, veuillez cliquer sur le lien suivant : <br>
 <a href="{{ absolute_url(path('app_activation', {'token': token})) }}">Je confirme mon compte</a>
 
 <p style="font-style: italic;">Ce mail expirera dans {{ expiration_date|date('g')}} heures.</p>
