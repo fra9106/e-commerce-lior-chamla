@@ -3,9 +3,9 @@
 {% block title %}Votre panier{% endblock %}
 
 {% block body %}<br><br><br>
-    <h1>Votre panier</h1><br><br><br>
 
     {% if items | length > 0 %}
+    <h1>Votre panier!</h1><br><br><br>
         <table class="table">
             <thead>
                 <tr>
@@ -49,5 +49,7 @@
             </tfoot>
         </table>
         <hr>
+        {% else %}
+            <h1>Votre panier est vide !</h1><br><br><br>
         {% endif %}
 {% endblock %}

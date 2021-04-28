@@ -79,7 +79,7 @@ class RegisterController extends AbstractController
     }
 
     /**
-     * @Route("/activation/{token}", name="app_activation", priority=1)
+     * @Route("/activation/{token}", name="app_activation", priority=-1)
      */
     public function activation(
         $token, 
