@@ -27,15 +27,15 @@ class CartController extends AbstractController
         $product = $productRepository->find($id);
 
         if (!$product) {
-            throw $this->createNotFoundException("Le produit $id n'existe pas !");
+            throw $this->createNotFoundException("Le produit $id n'existe pas ! 😞");
         }
 
         $this->service->add($id);
-        $this->addFlash('message', 'Produit rajouté dans votre panier !');
+        $this->addFlash('message', 'Produit rajouté dans votre panier ! 🤩');
 
-        /*if ($request->query->get('returnToCart')) {
-            return $this->redirectToRoute("show_product");
-        }*/
+        if ($request->query->get('returnToCart')) {
+            return $this->redirectToRoute("app_cart_show");
+        }
 
         return $this->redirectToRoute('show_product', [
             'category_slug' => $product->getCategory()->getSlug(),
@@ -59,5 +59,43 @@ class CartController extends AbstractController
             'total' => $total
 
         ]);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @Route("/cart/delete/{id}", name="app_cart_delete", requirements={"id":"\d+"})
+     */
+    public function delete($id, ProductRepository $productRepository, CartService $service)
+    {
+        $product = $productRepository->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException("Impossible de supprimer le produit $id, car ce produit n'existe pas ! 😞");
+        }
+
+        $service->remove($id);
+
+        $this->addFlash('message', 'Le produit a bien été supprimé de votre panier ! 🤩');
+
+        return $this->redirectToRoute('app_cart_show');
+    }
+
+    /**
+     * @Route("/cart/decrement/{id}", name="app_cart_decrement", requirements={"id": "\d+"})
+     */
+    public function decrement($id, ProductRepository $productRepository, CartService $service)
+    {
+        $product = $productRepository->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException("Vous ne pouvez pas supprimer une quantité de ce produit, car le produit $id n'existe pas ! 😞");
+        }
+
+        $service->decrement($id);
+
+        $this->addFlash("message", "La quantité de ce produit à bien été mise à jour 🤩");
+
+        return $this->redirectToRoute("app_cart_show");
     }
 }

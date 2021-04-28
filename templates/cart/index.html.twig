@@ -24,20 +24,20 @@
                         </td>
                         <td>{{ item.product.price}}</td>
                          <td>
-                            {# <a href="{{ path("cart_add", {'id': item.product.id}) }}?returnToCart=true" class="btn btn-sm btn-primary">
+                            <a href="{{ path("app_cart_add", {'id': item.product.id}) }}?returnToCart=true" class="btn btn-sm btn-primary">
                                 <i class="fas fa-plus"></i>
-                            </a> #}
+                            </a>
                             {{ item.qty }}
-                            {# <a href="{{ path("cart_decrement", {'id': item.product.id}) }}" class="btn btn-sm btn-primary">
+                             <a href="{{ path("app_cart_decrement", {'id': item.product.id}) }}" class="btn btn-sm btn-primary">
                                 <i class="fas fa-minus"></i>
-                            </a> #}
+                            </a>
                         </td> 
                         <td>{{ item.total }}</td>
-                        {# <td>
-                            <a href="{{ path("cart_delete", {'id': item.product.id}) }}" class="btn btn-sm btn-danger">
+                        <td>
+                            <a href="{{ path("app_cart_delete", {'id': item.product.id}) }}" class="btn btn-sm btn-danger">
                                 <i class="fas fa-trash"></i>
                             </a>
-                        </td> #}
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
