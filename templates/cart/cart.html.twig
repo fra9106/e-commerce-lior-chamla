@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre panier
+{% endblock %}
+
+{% block body %}<br><br><br>
+	<h1>Votre panier</h1><br><br><br>
+	{% if items | length > 0 %}
+		<h2>Votre panier :
+		</h2><br><br><br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Produit</th>
+					<th>Prix</th>
+					<th>Quantité</th>
+					<th>Total</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in items %}
+					<tr>
+						<td>
+							{{ item.product.name }}
+						</td>
+						<td>{{ item.product.price}}</td>
+						<td>
+							<a href="{{ path("app_cart_add", {'id': item.product.id}) }}?returnToCart=true" class="btn btn-sm btn-primary">
+								<i class="fas fa-plus"></i>
+							</a>
+							{{ item.qty }}
+							<a href="{{ path("app_cart_decrement", {'id': item.product.id}) }}" class="btn btn-sm btn-primary">
+								<i class="fas fa-minus"></i>
+							</a>
+						</td>
+						<td>{{ item.total }}</td>
+						<td>
+							<a href="{{ path("app_cart_delete", {'id': item.product.id}) }}" class="btn btn-sm btn-danger">
+								<i class="fas fa-trash"></i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3">Total :
+					</td>
+					<td colspan="2">{{ total}}</td>
+				</tr>
+			</tfoot>
+		</table>
+		<hr><br><br>
+		{% if app.user %}
+			<h2>Pour confirmer votre commande, veuillez remplir ce formulaire :
+				<br>
+				<br>
+				{{ form_start(form, {'action': path('app_purchase_confirmation')}) }}
+
+				{{ form_widget(form) }}
+
+				<button type="submit" class="btn-roun-shadow btn btn-success">Envoi</button>
+
+				{{ form_end(form) }}
+			{% else %}
+				<h2>Vous devez être connecté pour confirmer votre commande</h2>
+				<a href="{{ path('app_login') }}" class="btn btn-success">Connexion</a>
+				ou
+				<a href="{{ path('app_register') }}" class="btn btn-success">créez un compte</a>
+			{% endif %}
+		{% else %}
+			<h3>Votre panier est vide !</h3><br><br><br>
+		{% endif %}
+	{% endblock %}

@@ -60,7 +60,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=225)
-     *  @Assert\NotBlank(message="Prénom obligatoire !")
+     * @Assert\NotBlank(message="Prénom obligatoire !")
      * @Assert\Length(
      *      min = 4,
      *      max = 50,
@@ -72,7 +72,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=225)
-     *  @Assert\NotBlank(message="Nom obligatoire !")
+     * @Assert\NotBlank(message="Nom obligatoire !")
      * @Assert\Length(
      *      min = 4,
      *      max = 50,
