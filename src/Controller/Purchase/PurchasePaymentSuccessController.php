@@ -19,9 +19,13 @@ class PurchasePaymentSuccessController extends AbstractController
      * @Route("/purchase/terminate/{id}", name="app_purchase_payment_success")
      * @IsGranted("ROLE_USER")
      */
-    public function success($id, PurchaseRepository $purchaseRepository, EntityManagerInterface $em, CartService $cartService, EventDispatcherInterface $dispatcher)
-    {
-        // 1. Je récupère la commande
+    public function success(
+        $id,
+        PurchaseRepository $purchaseRepository,
+        EntityManagerInterface $em,
+        CartService $cartService,
+        EventDispatcherInterface $dispatcher
+    ) {
         $purchase = $purchaseRepository->find($id);
 
         if (
@@ -33,18 +37,14 @@ class PurchasePaymentSuccessController extends AbstractController
             return $this->redirectToRoute("purchase_index");
         }
 
-        // 2. Je la fait passer au status PAYEE (PAID)
         $purchase->setStatus(Purchase::STATUS_PAID);
         $em->flush();
 
-        // 3. Je vide le panier
         $cartService->empty();
 
-        // Lancer un événement qui permette aux autres développeurs de réagir à la prise d'une commande
-        //$purchaseEvent = new PurchaseSuccessEvent($purchase);
-        //$dispatcher->dispatch($purchaseEvent, 'purchase.success');
+        $purchaseEvent = new PurchaseSuccessEvent($purchase);
+        $dispatcher->dispatch($purchaseEvent, 'purchase.success');
 
-        // 4. Je redirige avec un flash vers la liste des commandes
         $this->addFlash('success', "La commande a été payée et confirmée !");
         return $this->redirectToRoute("app_purchases_list");
     }
