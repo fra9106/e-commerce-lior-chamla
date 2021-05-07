@@ -40,7 +40,7 @@
 			{% endif %}
 		</ul>
 		<a href="{{ path('app_cart_show') }}" class="nav-link text-secondary ">
-			<i class="fas fa-shopping-cart"></i> {{ cartService.total / 100}} €
+			<i class="fas fa-shopping-cart"></i> {{ cartService.total|amount}}
 		</a>
 		<form class="form-inline my-2 my-lg-0">
 			<input class="form-control mr-sm-2" type="text" placeholder="Search">

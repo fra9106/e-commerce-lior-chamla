@@ -34,18 +34,18 @@ class PurchasePaymentSuccessController extends AbstractController
             ($purchase && $purchase->getStatus() === Purchase::STATUS_PAID)
         ) {
             $this->addFlash('warning', "La commande n'existe pas");
-            return $this->redirectToRoute("purchase_index");
+            return $this->redirectToRoute("app_cart_show");
         }
 
         $purchase->setStatus(Purchase::STATUS_PAID);
         $em->flush();
 
         $cartService->empty();
-
+        
         $purchaseEvent = new PurchaseSuccessEvent($purchase);
         $dispatcher->dispatch($purchaseEvent, 'purchase.success');
 
-        $this->addFlash('success', "La commande a été payée et confirmée !");
+        $this->addFlash('message', "Merci pour votre règlement 😍 un mail de confirmation vous à été envoyé !");
         return $this->redirectToRoute("app_purchases_list");
     }
 }

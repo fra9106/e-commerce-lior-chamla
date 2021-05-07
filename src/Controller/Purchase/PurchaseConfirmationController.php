@@ -37,7 +37,7 @@ class PurchaseConfirmationController extends AbstractController
         $form->handleRequest($request);
 
         if (!$form->isSubmitted() && $form->isValid()) {
-            //throw $this->createNotFoundException("Vous devez remplir le formulaire 😞");
+
             $this->addFlash('message', 'Vous devez remplir le formulaire 😞 !');
             return $this->redirectToRoute('app_cart_show');
         }
