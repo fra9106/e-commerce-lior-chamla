@@ -89,10 +89,15 @@ class User implements UserInterface
     private $activation_token;
 
     /**
-     * @ORM\OneToMany(targetEntity=Purchase::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Purchase::class, mappedBy="user", orphanRemoval=true)
      * @OrderBy({"purchaseAt" = "DESC"})
      */
     private $purchases;
+
+    /**
+     * @ORM\Column(type="string", length=150, nullable=true)
+     */
+    private $picture;
 
     public function __construct()
     {
@@ -245,6 +250,18 @@ class User implements UserInterface
                 $purchase->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
 
         return $this;
     }

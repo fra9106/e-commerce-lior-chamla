@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de
+	{{ user.fullName}}
+{% endblock %}
+
+{% block body %}
+	<h1>Hello
+		{{ user.fullName}}
+	</h1>
+
+	<div class="container">
+		<div class="row align-items-center mb-5">
+			<div class="col-3 text-center">
+				<img src="{{user.picture}}" class="avatar mb-3" alt="Avatar de {{user.fullName}}">
+				<br>
+				<span class="badge bg-primary text-white">{{user.purchases | length}}
+					commandes</span>
+			</div>
+			<div class="card" style="width: 18rem;">
+				<div class="card-header">
+					{{ user.fullName}}
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">{{ user.firstName}}</li>
+					<li class="list-group-item">{{ user.lastName}}</li>
+					<li class="list-group-item">{{ user.email}}</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

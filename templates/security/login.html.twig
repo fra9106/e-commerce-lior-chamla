@@ -1,33 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Log in!
+{% endblock %}
 
 {% block body %}<br><br><br><br><br>
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+	<form method="post">
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1><br><br><br>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus><br><br><br>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required><br><br>
+		<h1 class="h3 mb-3 font-weight-normal">Connexion</h1><br><br><br>
+		<label for="inputEmail">Email</label>
+		<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus><br><br><br>
+		<label for="inputPassword">Password</label>
+		<input type="password" name="password" id="inputPassword" class="form-control" required><br><br>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-    
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div><br><br><br>
-    
 
-    <button class="btn btn-lg btn-success" type="submit">
-        Sign in
-    </button><br><br><br><br><br><br><br><br><br>
-</form>
+		<div class="checkbox mb-3">
+			<label>
+				<input type="checkbox" name="_remember_me">
+				Remember me
+			</label>
+		</div><br><br><br>
+
+
+		<button class="btn btn-lg btn-success" type="submit">
+			Sign in
+		</button><br><br><br><br><br><br><br><br><br>
+	</form>
 {% endblock %}
