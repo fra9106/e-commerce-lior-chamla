@@ -33,7 +33,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{category_slug}/{slug}/", name="show_product", priority=-1)
+     * @Route("/{category_slug}/{slug}/", name="show_product", priority=-2)
      */
     public function show($slug, $prenom, ProductRepository $productRepository, Request $request, EventDispatcherInterface $dispatcher )
     {       

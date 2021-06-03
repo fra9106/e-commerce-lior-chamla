@@ -20,6 +20,10 @@ class RegistrationFormType extends AbstractType
             ->add('confirm_password', PasswordType::class)
             ->add('first_name')
             ->add('last_name')
+            ->add('billing_address')
+            ->add('city')
+            ->add('postal_code')
+            ->add('phone_number')
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
