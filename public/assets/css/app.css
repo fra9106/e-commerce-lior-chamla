@@ -15,3 +15,11 @@ html {
     left: 0;
     z-index: 1030;
 }
+
+.card-profile {
+    width: 18rem;
+}
+
+.avatar {
+    border-radius: 50%;
+}

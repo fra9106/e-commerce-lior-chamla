@@ -37,7 +37,11 @@ class AppFixtures extends Fixture
             ->setFirstName($faker->firstNameFemale())
             ->setLastName("Admin")
             ->setRoles(['ROLE_ADMIN'])
-            ->setPicture('https://randomuser.me/api/portraits/women/36.jpg');
+            ->setPicture('https://randomuser.me/api/portraits/women/36.jpg')
+            ->setBillingAddress($faker->streetAddress)
+            ->setPostalCode($faker->postcode)
+            ->setPhoneNumber($faker->phoneNumber)
+            ->setCity($faker->city);
 
         $manager->persist($admin);
 
@@ -57,7 +61,11 @@ class AppFixtures extends Fixture
                 ->setFirstName($faker->firstNameMale())
                 ->setLastName($faker->lastName())
                 ->setPassword($password)
-                ->setPicture($picture);
+                ->setPicture($picture)
+                ->setBillingAddress($faker->streetAddress)
+                ->setPostalCode($faker->postcode)
+                ->setPhoneNumber($faker->phoneNumber)
+                ->setCity($faker->city);
 
             $users[] = $user;
 

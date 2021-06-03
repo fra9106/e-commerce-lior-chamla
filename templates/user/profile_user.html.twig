@@ -5,29 +5,43 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Hello
-		{{ user.fullName}}
-	</h1>
 
-	<div class="container">
-		<div class="row align-items-center mb-5">
-			<div class="col-3 text-center">
-				<img src="{{user.picture}}" class="avatar mb-3" alt="Avatar de {{user.fullName}}">
+
+	<div class="container ">
+		<h1  class="text-center mb-5">Hello
+			{{ user.fullName}}
+		</h1>
+		<div class="row align-items-center justify-content-center mb-5">
+			<div class="justify-content-center text-center">
+				<img src="{{user.picture}}" class="avatar mb-3 mr-3" alt="Avatar de {{user.fullName}}">
 				<br>
-				<span class="badge bg-primary text-white">{{user.purchases | length}}
+				<span class="badge bg-primary text-white mb-3">{{user.purchases | length}}
 					commandes</span>
 			</div>
-			<div class="card" style="width: 18rem;">
-				<div class="card-header">
+			<div class="card card-profile mb-3">
+				<div class="card-header text-center">
 					{{ user.fullName}}
 				</div>
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item">{{ user.firstName}}</li>
-					<li class="list-group-item">{{ user.lastName}}</li>
-					<li class="list-group-item">{{ user.email}}</li>
+					<li class="list-group-item">Nom : {{ user.firstName}}</li>
+					<li class="list-group-item">Prénom : {{ user.lastName}}</li>
+					<li class="list-group-item">Mail : {{ user.email}}</li>
+					<li class="list-group-item">Adresse : {{ user.billingAddress}}</li>
+					<li class="list-group-item">Ville : {{ user.city}}</li>
+					<li class="list-group-item">Code postal : {{ user.postalCode}}</li>
+					<li class="list-group-item">Telephone : {{ user.phoneNumber}}</li>
 				</ul>
 			</div>
-
+			<div class="col text-center">
+			<a href="#" class="btn btn-success btn-lg mb-2">
+				<i class="fas fa-edit"></i>
+				Modifier mon profil
+			</a>
+			<a href="#" class="btn btn-success btn-lg mb-2">
+				<i class="fas fa-key"></i>
+				Modifier mon mot de passe
+			</a>
+			</div>
 		</div>
 	</div>
 {% endblock %}

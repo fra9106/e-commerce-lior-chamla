@@ -99,6 +99,26 @@ class User implements UserInterface
      */
     private $picture;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $billingAddress;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $postalCode;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $phoneNumber;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $city;
+
     public function __construct()
     {
         $this->roles = ['ROLE_USER'];
@@ -262,6 +282,54 @@ class User implements UserInterface
     public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getBillingAddress(): ?string
+    {
+        return $this->billingAddress;
+    }
+
+    public function setBillingAddress(string $billingAddress): self
+    {
+        $this->billingAddress = $billingAddress;
+
+        return $this;
+    }
+
+    public function getPostalCode(): ?string
+    {
+        return $this->postalCode;
+    }
+
+    public function setPostalCode(string $postalCode): self
+    {
+        $this->postalCode = $postalCode;
+
+        return $this;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(string $phoneNumber): self
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
 
         return $this;
     }
