@@ -31,10 +31,10 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle text-secondary" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Bienvenue
 						{{app.user.fullName}}
-						{% if user.picture %}
-							<img class="mini-avatar" src="{{ asset('assets/avatars/img_profile/' ~ user.picture) }}" alt="avatar de {{ user.fullName }}">
+						{% if app.user.picture %}
+							<img class="mini-avatar" src="{{ asset('assets/avatars/img_profile/' ~ app.user.picture) }}" alt="avatar de {{ app.user.fullName }}">
 						{% else %}
-							<img class="mini-avatar" src="{{ asset('assets/avatars/default.jpg') }}" alt="avatar de {{ user.fullName }}">
+							<img class="mini-avatar" src="{{ asset('assets/avatars/default.jpg') }}" alt="avatar de {{ app.user.fullName }}">
 						{% endif %}
 					</a>
 					<div class="dropdown-menu">
