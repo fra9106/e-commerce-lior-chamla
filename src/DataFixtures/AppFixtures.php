@@ -27,7 +27,7 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
         $faker->addProvider(new \Liior\Faker\Prices($faker));
         $faker->addProvider(new \Bezhanov\Faker\Provider\Commerce($faker));
-        $faker->addProvider(new \Bezhanov\Faker\Provider\Avatar($faker));
+        //$faker->addProvider(new \Bezhanov\Faker\Provider\Avatar($faker));
         $faker->addProvider(new \Bluemmb\Faker\PicsumPhotosProvider($faker));
 
         $admin = new User();
@@ -37,7 +37,7 @@ class AppFixtures extends Fixture
             ->setFirstName($faker->firstNameFemale())
             ->setLastName("Admin")
             ->setRoles(['ROLE_ADMIN'])
-            ->setPicture('https://randomuser.me/api/portraits/women/36.jpg')
+            //->setPicture('https://randomuser.me/api/portraits/women/36.jpg')
             ->setBillingAddress($faker->streetAddress)
             ->setPostalCode($faker->postcode)
             ->setPhoneNumber($faker->phoneNumber)
@@ -52,16 +52,16 @@ class AppFixtures extends Fixture
         for ($u = 0; $u < 5; $u++) {
             $user = new User();
             $genre = $faker->randomElement($genres);
-            $picture = 'https://randomuser.me/api/portraits/';
+            //$picture = 'https://randomuser.me/api/portraits/';
             $pictureId = $faker->numberBetween(1, 99) . '.jpg';
 
-            $picture .= ($genre == 'male' ? 'men/' : 'women/') . $pictureId;
+            //$picture .= ($genre == 'male' ? 'men/' : 'women/') . $pictureId;
             $password = $this->encoder->encodePassword($user, 'toto');
             $user->setEmail("user$u@gmail.com")
                 ->setFirstName($faker->firstNameMale())
                 ->setLastName($faker->lastName())
                 ->setPassword($password)
-                ->setPicture($picture)
+                //->setPicture($picture)
                 ->setBillingAddress($faker->streetAddress)
                 ->setPostalCode($faker->postcode)
                 ->setPhoneNumber($faker->phoneNumber)

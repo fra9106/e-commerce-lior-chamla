@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
   product_images: /uploads/images
+  img_profile_directory: '%kernel.project_dir%/public/assets/avatars/img_profile'
 
 services:
   # default configuration for services in *this* file

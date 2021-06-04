@@ -42,6 +42,18 @@ class RegisterController extends AbstractController
                     $form->get('password')->getData()
                 )
             );
+
+            $avatar = $form->get('picture')->getData();
+            if($avatar){
+                $fichier = md5(uniqid()) . '.' . $avatar->guessExtension();
+                
+                $avatar->move(
+                    $this->getParameter('img_profile_directory'),
+                    $fichier
+                );
+
+                $user->setPicture($fichier);
+            }
             // On génère un token et on l'enregistre
             $user->setActivationToken(md5(uniqid()));
 
