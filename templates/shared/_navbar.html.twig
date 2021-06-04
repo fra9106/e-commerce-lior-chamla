@@ -29,7 +29,14 @@
 				</li>
 			{% else %}
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle text-secondary" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Bienvenue</a>
+					<a class="nav-link dropdown-toggle text-secondary" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Bienvenue
+						{{app.user.fullName}}
+						{% if user.picture %}
+							<img class="mini-avatar" src="{{ asset('assets/avatars/img_profile/' ~ user.picture) }}" alt="avatar de {{ user.fullName }}">
+						{% else %}
+							<img class="mini-avatar" src="{{ asset('assets/avatars/default.jpg') }}" alt="avatar de {{ user.fullName }}">
+						{% endif %}
+					</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item text-secondary" href="{{ path('app_profile_user') }}">Profil</a>
 						<a class="dropdown-item text-secondary" href="{{ path('app_purchases_list') }}">Mes commandes</a>
@@ -40,7 +47,8 @@
 			{% endif %}
 		</ul>
 		<a href="{{ path('app_cart_show') }}" class="nav-link text-secondary ">
-			<i class="fas fa-shopping-cart"></i> {{ cartService.total|amount}}
+			<i class="fas fa-shopping-cart"></i>
+			{{ cartService.total|amount}}
 		</a>
 	</div>
 </nav>

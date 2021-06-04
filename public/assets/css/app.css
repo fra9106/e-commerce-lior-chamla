@@ -23,3 +23,9 @@ html {
 .avatar {
     border-radius: 50%;
 }
+
+.mini-avatar {
+    border-radius: 50%;
+    max-width: 30px;
+    max-height: 30px;
+}
