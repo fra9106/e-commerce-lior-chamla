@@ -45,7 +45,7 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      * @Assert\Length(
      *      min = 4,
-     *      max = 50,
+     *      max = 150,
      *      minMessage = "Votre mot de passe doit être au minimum de {{ limit }} caratères de long",
      *      maxMessage = "Votre mot de passe doit être au maximum de {{ limit }} caratères de long"
      * )
