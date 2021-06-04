@@ -27,31 +27,35 @@
 
 	<hr>
 	<h2 class="text-center">Services</h2>
-	<p class="text-center">Lorem ipsum dolor incididunt ut labore et dolore magna aliqua, quis nostrud exercitation
-							ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-							velit esse cillum dolore eu fugiat nulla pariatur.
+	<p class="text-justify">Lorem ipsum dolor incididunt ut labore et dolore magna aliqua, quis nostrud exercitation
+											ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+											velit esse cillum dolore eu fugiat nulla pariatur.
 	</p>
 
 	<div class="row mx-4">
-		{% include "shared/_services.html.twig" with {
+		<div class="col  my-2">
+			{% include "shared/_services.html.twig" with {
     'color': 'primary',
     'icon': 'fas fa-truck',
     'text': "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
     laborum."
     } %}
-
-		{% include "shared/_services.html.twig" with {
+		</div>
+		<div class="col my-2">
+			{% include "shared/_services.html.twig" with {
     'color': 'success',
     'icon': 'fas fa-check',
     'text': "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
     laborum."
     } %}
-
-		{% include "shared/_services.html.twig" with {
+		</div>
+		<div class="col  my-2">
+			{% include "shared/_services.html.twig" with {
     'color': 'warning',
     'icon': 'fas fa-lock',
     'text': "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
     laborum."
     } %}
+		</div>
 	</div>
 {% endblock %}
