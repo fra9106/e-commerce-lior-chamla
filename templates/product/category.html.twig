@@ -22,8 +22,8 @@
 						<img src="{{ vich_uploader_asset(product, 'mainPictureFile') }}" class="img-fluid" alt=" image de : {{ product.name }}">
 						<div class="card-body">
 							<h4 class="card-title">{{ product.name }}
-								({{ product.price|amount }}
-								&euro;)</h4>
+								{{ product.price|amount }}
+								&euro;</h4>
 							<p class="card-text">{{ product.shortDescription }}</p>
 							<a href="{{ path('show_product', { 'category_slug' : product.category.slug, 'slug': product.slug}) }}" class="btn btn-primary btn-sm">Détail</a>
 							<a href="{{ path('app_cart_add', {'id': product.id}) }}" class="btn btn-success btn-sm">Ajouter</a>

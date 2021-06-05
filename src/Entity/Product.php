@@ -14,6 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * 
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  * @Vich\Uploadable
+ * @ORM\Table(name="product", indexes={@ORM\Index(columns={"name"}, flags={"fulltext"})})
  */
 class Product
 {

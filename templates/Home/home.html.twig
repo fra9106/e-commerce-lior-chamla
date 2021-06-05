@@ -4,12 +4,24 @@
 {% endblock %}
 
 {% block body %}
-	<br>
-	<h1 class="text-center mt-4 mb-4">Nos produits les plus consultés</h1>
+	<div classe="container">
+		<div class="bg-light py-3 px-3 border border-2 rounded">
+
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+
+			<button type="submit" class="btn btn-primary">
+				<i class="fas fa-check"></i>
+				Va chercher !</button>
+
+			{{ form_end(form) }}
+		</div>
+	</div>
+	<h1 class="text-center my-4">Nos produits les plus consultés</h1>
 
 	<div class="row">
 		{% for product in products %}
-			<div class="col">
+			<div class="col-md-4 col-sm-12">
 				<div class="card">
 					<img src="{{ vich_uploader_asset(product, 'mainPictureFile') }}" class="img-fluid" alt=" image de : {{ product.name }}">
 					<div class="card-body">
@@ -28,8 +40,8 @@
 	<hr>
 	<h2 class="text-center">Services</h2>
 	<p class="text-justify">Lorem ipsum dolor incididunt ut labore et dolore magna aliqua, quis nostrud exercitation
-											ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-											velit esse cillum dolore eu fugiat nulla pariatur.
+															ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+															velit esse cillum dolore eu fugiat nulla pariatur.
 	</p>
 
 	<div class="row mx-4">

@@ -19,6 +19,26 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+    /**
+     * Recherche les produits en fonction du formulaire
+     * @return void 
+     */
+    public function search($words)
+    {
+        $query = $this->createQueryBuilder('p');
+        if ($words != null) {
+            $query->Where('MATCH_AGAINST(p.name) AGAINST (:words boolean)>0')
+                ->setParameter('words', $words);
+        }
+        /*if ($category != null) {
+            $query->leftJoin('p.category', 'c');
+            $query->andWhere('c.id = :id')
+                ->setParameter('id', $category);
+        }*/
+        return $query->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */
