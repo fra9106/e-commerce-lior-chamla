@@ -56,7 +56,7 @@ class CartService
     {
         $total = 0;
 
-        $cart = $this->session->get('cart', []);
+        $cart = $this->getCart();
 
         foreach ($cart as $id => $qty) {
             $product = $this->productRepository->find($id);
@@ -80,7 +80,7 @@ class CartService
     {
         $detailedCart = []; // à la base c'est un tableau qui est vide
 
-        $cart = $this->session->get('cart', []);
+        $cart = $this->getCart();
 
         foreach ( $cart as $id => $qty) {
             $product = $this->productRepository->find($id);
