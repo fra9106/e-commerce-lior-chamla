@@ -46,17 +46,19 @@ class CartService
 
     public function remove(int $id)
     {
-        $cart = $this->session->get('cart', []);
+        $cart = $this->getCart();
         unset($cart[$id]);
 
-        $this->session->set('cart', $cart);
+        $this->saveCart($cart);
     }
 
     public function getTotal(): int
     {
         $total = 0;
 
-        foreach ($this->session->get('cart', []) as $id => $qty) {
+        $cart = $this->session->get('cart', []);
+
+        foreach ($cart as $id => $qty) {
             $product = $this->productRepository->find($id);
 
             if (!$product) {
@@ -78,7 +80,9 @@ class CartService
     {
         $detailedCart = []; // à la base c'est un tableau qui est vide
 
-        foreach ($this->session->get('cart', []) as $id => $qty) {
+        $cart = $this->session->get('cart', []);
+
+        foreach ( $cart as $id => $qty) {
             $product = $this->productRepository->find($id);
 
             if (!$product) {
@@ -92,7 +96,7 @@ class CartService
 
     public function decrement(int $id)
     {
-        $cart = $this->session->get('cart', []);
+        $cart = $this->getCart();
 
         if (!array_key_exists($id, $cart)) {
             return;
@@ -105,7 +109,7 @@ class CartService
 
         $cart[$id]--;
 
-        $this->session->set('cart', $cart);
+        $this->saveCart($cart);
     }
 
 }

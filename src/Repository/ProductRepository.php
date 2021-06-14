@@ -20,7 +20,7 @@ class ProductRepository extends ServiceEntityRepository
     }
 
     /**
-     * Recherche les produits en fonction du formulaire
+     * Recherche les produits
      * @return void 
      */
     public function search($words)
@@ -30,11 +30,6 @@ class ProductRepository extends ServiceEntityRepository
             $query->Where('MATCH_AGAINST(p.name) AGAINST (:words boolean)>0')
                 ->setParameter('words', $words);
         }
-        /*if ($category != null) {
-            $query->leftJoin('p.category', 'c');
-            $query->andWhere('c.id = :id')
-                ->setParameter('id', $category);
-        }*/
         return $query->getQuery()
             ->getResult();
     }
