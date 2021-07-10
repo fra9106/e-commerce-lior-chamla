@@ -11,7 +11,7 @@ class CartService
     protected $session;
     protected $productRepository;
 
-    public function __construct(sessionInterface $session, ProductRepository $productRepository)
+    public function __construct(SessionInterface $session, ProductRepository $productRepository)
     {
         $this->session = $session;
         $this->productRepository = $productRepository;
@@ -82,7 +82,7 @@ class CartService
 
         $cart = $this->getCart();
 
-        foreach ( $cart as $id => $qty) {
+        foreach ($cart as $id => $qty) {
             $product = $this->productRepository->find($id);
 
             if (!$product) {
